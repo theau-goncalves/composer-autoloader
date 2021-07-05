@@ -102,5 +102,5 @@ class Pokemon
     {
         return $this->types;
     }
-
+    
 }
