@@ -19,6 +19,7 @@
     },
     "require": {
         "cocur/slugify": "^4.0",
-        "ramsey/uuid": "^4.1"
+        "ramsey/uuid": "^4.1",
+        "symfony/filesystem": "^5.3"
     }
 }

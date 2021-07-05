@@ -5,6 +5,8 @@ require 'vendor/autoload.php';
 use App\Abilities;
 use Cocur\Slugify\Slugify;
 use Ramsey\Uuid\Uuid;
+use Symfony\Component\Filesystem\Exception\IOExceptionInterface;
+use Symfony\Component\Filesystem\Filesystem;
 
 $ab = new Abilities('Coucou', true, 'Desc');
 
@@ -46,3 +48,32 @@ foreach ($tab as $user) {
 }
 
 dump($usersWithUuid);
+
+// A partir de symfony/filesystem
+//Verif if /public/uploads exist -> sinon création
+
+$filesystem = new Filesystem();
+
+$uploadDirPath = __DIR__ . '/public/uploads';
+
+if(!$filesystem->exists($uploadDirPath)) {
+    try {
+        $filesystem->mkdir($uploadDirPath);
+    } catch (IOExceptionInterface $exception) {
+        echo "An error occurred while creating your directory at ".$exception->getPath();
+    }
+} else {
+    try {
+        $date = (new DateTime())->format('Y-m-d H:i:s');
+        $filesystem->appendToFile(
+            $uploadDirPath . '/test.txt',
+            $date . " Fichier lancé \n"
+        );
+
+        echo 'Uploads folder has been created';
+    } catch (IOExceptionInterface $exception) {
+        echo "An error occurred while creating test.text ".$exception->getPath();
+    }
+}
+
+
