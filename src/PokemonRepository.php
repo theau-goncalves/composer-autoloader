@@ -1,9 +1,6 @@
 <?php
-include_once '../model/Pokemon.php';
-include_once '../model/Types.php';
-include_once '../model/Stats.php';
-include_once '../model/Abilities.php';
 
+namespace App;
 
 class PokemonRepository
 {
