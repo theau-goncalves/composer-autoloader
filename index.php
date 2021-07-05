@@ -5,4 +5,20 @@ require 'vendor/autoload.php';
 use App\Abilities;
 
 $ab = new Abilities('Coucou', true, 'Desc');
-var_dump($ab);
+
+$tab = [
+    0 => [
+        'name' => 'Theau',
+        'height' => '180'
+    ],
+    1 => [
+        'name' => 'Alice',
+        'height' => '158'
+    ]
+];
+
+dump($tab);
+dump($ab);
+
+//apprendre-a-utiliser-composer
+$postTitle = "Apprendre à utiliser composer";
