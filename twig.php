@@ -7,7 +7,7 @@ require 'vendor/autoload.php';
 
 $loader = new FilesystemLoader(__DIR__ . '/templates');
 $twig = new Environment($loader, [
-    'cache' => false,
+//    'cache' => __DIR__ . '/var/cache',
 ]);
 
 try {

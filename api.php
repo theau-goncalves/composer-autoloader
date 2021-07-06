@@ -1,46 +1,19 @@
 <?php
 require 'vendor/autoload.php';
 
-use Symfony\Component\HttpClient\HttpClient;
-use Symfony\Contracts\HttpClient\Exception\TransportExceptionInterface;
+use App\Api\SpaceXApi;
 
-$client = (new HttpClient())->create();
+$spaceXApi = new SpaceXApi();
 
-$client = HttpClient::create();
-
-try {
-    $response = $client->request(
-        'GET',
-        'https://api.spacexdata.com/v4/crew/5fe3bc3db3467846b324218b'
-    );
-
-    $astro = $response->toArray();
+    $astro = $spaceXApi->getCrewMember('5fe3bc3db3467846b324218b');
 
     if(count($astro['launches']) > 0) {
         $launchId = $astro['launches'][0];
     }
 
     if(!empty($launchId)) {
-        try {
-            $response = $client->request(
-                'GET',
-                'https://api.spacexdata.com/v4/launches/' . $launchId
-        );
-
-            $launchData = $response->toArray();
-
-//            dump($launchData);
-        } catch (TransportExceptionInterface $e) {
-            dump($e);
-        }
+            $launchData = $spaceXApi->getLaunch($launchId);
     }
-
-
-
-} catch (TransportExceptionInterface $e) {
-    dump($e);
-}
-
 
 ?>
 
