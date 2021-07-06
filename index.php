@@ -7,6 +7,8 @@ use Cocur\Slugify\Slugify;
 use Ramsey\Uuid\Uuid;
 use Symfony\Component\Filesystem\Exception\IOExceptionInterface;
 use Symfony\Component\Filesystem\Filesystem;
+use Symfony\Component\HttpClient\HttpClient;
+use Symfony\Contracts\HttpClient\Exception\TransportExceptionInterface;
 
 $ab = new Abilities('Coucou', true, 'Desc');
 
@@ -21,13 +23,13 @@ $tab = [
     ]
 ];
 
-dump($tab);
-dump($ab);
+//dump($tab);
+//dump($ab);
 
 //apprendre-a-utiliser-composer
 $postTitle = "Apprendre à utiliser composer";
 
-echo (new Slugify())->slugify($postTitle);
+//echo (new Slugify())->slugify($postTitle);
 
 //Ajouter un uuid dans une case id de cache tableau de $tab pour obtenir
 
@@ -47,7 +49,7 @@ foreach ($tab as $user) {
     $usersWithUuid[] = $user;
 }
 
-dump($usersWithUuid);
+//dump($usersWithUuid);
 
 // A partir de symfony/filesystem
 //Verif if /public/uploads exist -> sinon création
@@ -70,10 +72,16 @@ if(!$filesystem->exists($uploadDirPath)) {
             $date . " Fichier lancé \n"
         );
 
-        echo 'Uploads folder has been created';
+//        echo 'Uploads folder has been created';
     } catch (IOExceptionInterface $exception) {
         echo "An error occurred while creating test.text ".$exception->getPath();
     }
 }
+
+
+
+
+
+
 
 
