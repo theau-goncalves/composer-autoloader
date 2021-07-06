@@ -103,7 +103,7 @@ try {
                 <?php
                     $launchDate = new \DateTime($launchData['static_fire_date_utc']);
                 ?>
-                Date : <?php echo $launchDate->format('Y-m-d H:i')?>$
+                Date : <?php echo $launchDate->format('Y-m-d H:i')?>
                 <div class="mt-3">
                     <?php echo $launchData['details'];?>
                 </div>
@@ -120,7 +120,7 @@ try {
                 <?php endif;?>
                 
             </div>
-           
+
         </div>
     </div>
 </div>
